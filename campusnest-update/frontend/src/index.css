@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body { @apply font-sans antialiased bg-primary; }
+  h1, h2, h3, .font-display { font-family: 'Syne', sans-serif; }
+}
+
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed; }
+  .btn-primary { @apply btn bg-accentGold text-white hover:bg-amber-600 shadow-sm; }
+  .btn-blue { @apply btn bg-accentBlue text-white hover:bg-blue-600 shadow-sm; }
+  .btn-emerald { @apply btn bg-accentEmerald text-white hover:bg-emerald-600 shadow-sm; }
+  .btn-ghost { @apply btn bg-white text-slate-700 border border-slate-200 hover:bg-slate-50; }
+  .btn-danger { @apply btn bg-rose-600 text-white hover:bg-rose-700; }
+  .card { @apply bg-white/95 backdrop-blur rounded-2xl shadow-sm border border-slate-100 p-5; }
+  .glass { @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-xl text-white; }
+  .input { @apply w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accentGold; }
+  .input-dark { @apply w-full rounded-xl border border-white/20 bg-white/10 px-3 py-2.5 text-sm text-white placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-accentGold; }
+  .label { @apply block text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1; }
+  .chip { @apply inline-flex items-center rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-600; }
+  .tab { @apply px-4 py-2 rounded-xl text-sm font-medium text-slate-600 hover:bg-white hover:shadow-sm transition; }
+  .tab-active { @apply bg-white shadow-sm text-amber-700; }
+}
+
+/* Campus photo backdrop — full "hero" mode on landing/login, soft mode behind the app */
+.backdrop { @apply fixed inset-0 -z-10 bg-campus bg-cover bg-center bg-no-repeat; }
+.backdrop-hero::after { content: ''; @apply absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/60 to-primary/85; }
+.backdrop-app::after { content: ''; @apply absolute inset-0 bg-slate-50/90; }
+
+/* transform-only entrance (content is never hidden, even if animations are paused) */
+@keyframes rise { from { transform: translateY(18px) scale(0.98); } to { transform: translateY(0) scale(1); } }
+.rise { animation: rise .55s cubic-bezier(.2,.8,.2,1) both; }
+.rise-1 { animation-delay: .05s } .rise-2 { animation-delay: .15s } .rise-3 { animation-delay: .25s } .rise-4 { animation-delay: .35s } .rise-5 { animation-delay: .45s }
